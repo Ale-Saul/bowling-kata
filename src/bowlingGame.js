@@ -11,9 +11,12 @@ class Game {
   }
 
   getScore() {
-    score = 0;
+    this.score = 0;
     for (let i = 0; i < this.rolls.length; i++) {
-      score += this.rolls[i];
+      if(this.rolls[i] + this.rolls[i + 1] === 10) {
+        this.score += this.rolls[i];
+      }
+      this.score += this.rolls[i];
     }
     return this.score;
   }
