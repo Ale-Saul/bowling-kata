@@ -10,6 +10,10 @@ describe("Jugar", () => {
       game.roll(pins);
     }
   }
+  const rollSpare = () => {
+    game.roll(5);
+    game.roll(5);
+  }
 
   it("deberia devolver 0 de la funcion game", () => {
     rollMany(20, 0);
@@ -20,8 +24,7 @@ describe("Jugar", () => {
     expect(game.score()).toBe(20);
   });
   it("deberia devolver el caso especial de 1 spare", () => {
-    game.roll(5);
-    game.roll(5);
+    rollSpare();
     game.roll(3);
     rollMany(17, 0);
     expect(game.score()).toBe(16);
