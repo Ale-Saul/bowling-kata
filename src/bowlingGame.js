@@ -12,21 +12,34 @@ class Game {
     let score = 0;
     let frameIndex = 0;
     for (let frame = 0; frame < 10; frame++) {
-      if (this.rolls[frameIndex] === 10) {
-        score += 10 + this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
+      if (this.rolls[frameIndex] === 10) { // strike
+        score += 10 + this.strikeBonus(frameIndex);
         frameIndex++;
-      } else if (this.IsSpare(frameIndex)) {
-        score += 10 + this.rolls[frameIndex + 2];
+      } else if (this.isSpare(frameIndex)) {
+        score += 10 + this.spareBonus(frameIndex);
         frameIndex += 2;
       } else {
-        score += this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+        score += this.sumOfBallsInFrame(frameIndex);
         frameIndex += 2;
       }
     }
     return score;
   }
-  IsSpare(rollIndex) {
-    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
+
+  sumOfBallsInFrame(frameIndex) {
+    return this.rolls[frameIndex] + this.rolls[frameIndex + 1];
+  }
+
+  spareBonus(frameIndex) {
+    return this.rolls[frameIndex + 2];
+  }
+
+  strikeBonus(frameIndex) {
+    return this.rolls[frameIndex + 1] + this.rolls[frameIndex + 2];
+  }
+
+  isSpare(frameIndex) {
+    return this.rolls[frameIndex] + this.rolls[frameIndex + 1] === 10;
   }
 }
 
