@@ -1,5 +1,10 @@
-function game() {
-  return 0;
+class Game {
+  roll(pins) {
+  }
+
+  score() {
+    return 0;
+  }
 }
 
-export default game;
+export default Game;
