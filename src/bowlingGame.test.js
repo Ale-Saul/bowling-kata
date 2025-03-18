@@ -43,4 +43,8 @@ describe("Jugar", () => {
     rollMany(12, 10);
     expect(game.score()).toBe(300);
   });
+  it("deberia devolver el caso especial de 1 perfect game", () => {
+    rollMany(12, 10);
+    expect(game.score()).toBe(300);
+  });
 });
